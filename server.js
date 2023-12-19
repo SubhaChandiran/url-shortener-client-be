@@ -2,17 +2,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
 const validUrl = require("valid-url");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 
 // MongoDB connection
-mongoose.connect(process.env.DB_URL,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Define the URL schema
 const urlSchema = new mongoose.Schema({
@@ -24,6 +23,7 @@ const Url = mongoose.model("Url", urlSchema);
 
 // Middleware to parse JSON
 app.use(express.json());
+app.use(cors());
 
 // Route to shorten a URL
 app.post("/api/shorten", async (req, res) => {
