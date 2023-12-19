@@ -23,7 +23,7 @@ const Url = mongoose.model("Url", urlSchema);
 
 // Middleware to parse JSON
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://phenomenal-marshmallow-271a99.netlify.app" }));
 
 // Route to shorten a URL
 app.post("/api/shorten", async (req, res) => {
